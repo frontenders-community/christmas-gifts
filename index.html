@@ -8,12 +8,13 @@
   </head>
   <body>
     <div id="app">
-      <form action="">
-        <h1>Per chi vorresti trovare un regalo?</h1>
+      <h1>Per chi vorresti trovare un regalo?</h1>
+
+      <form action="" id="gift-form">
         <div>
           <label for="relation">Relazione</label>
-          <select id="relation">
-            <option value="Partner romatico">Partner romatico</option>
+          <select id="relation" name="relation">
+            <option value="Partner Romantico">Partner Romantico</option>
             <option value="Amica/o">Amica/o</option>
             <option value="Figlia/o">Figlia/o</option>
             <option value="Genitore">Genitore</option>
@@ -21,22 +22,12 @@
           </select>
         </div>
 
-        <div>
-          <label for="hobby">Hobby</label>
-          <select id="hobby" multiple>
-            <option value="Videogiochi">Videogiochi</option>
-            <option value="Giardinaggio">Giardinaggio</option>
-            <option value="Musica">Musica</option>
-            <option value="Sport">Sport</option>
-            <option value="Cinema">Cinema</option>
-            <option value="Viaggi">Viaggi</option>
-            <option value="Moda">Moda</option>
-          </select>
-        </div>
+        <div id="hobbies"></div>
 
         <div>
           <label for="age">Età</label>
           <input
+            name="age"
             type="range"
             id="age"
             min="0"
@@ -48,8 +39,10 @@
           <output>24</output>
         </div>
 
-        <button type="submit">Genera un regalo</button>
+        <button id="generate-btn" type="submit">Genera un regalo</button>
       </form>
+
+      <div id="result"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

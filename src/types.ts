@@ -6,3 +6,9 @@ export type Gift = {
   maxAge: number;
 };
 
+export type Filters = {
+  hobby: Array<string>;
+  age: 0;
+  relation: "";
+  [index: string]: any;
+};
