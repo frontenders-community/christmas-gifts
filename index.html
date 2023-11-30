@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,50 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <form action="">
+        <h1>Per chi vorresti trovare un regalo?</h1>
+        <div>
+          <label for="relation">Relazione</label>
+          <select id="relation">
+            <option value="Partner romatico">Partner romatico</option>
+            <option value="Amica/o">Amica/o</option>
+            <option value="Figlia/o">Figlia/o</option>
+            <option value="Genitore">Genitore</option>
+            <option value="Sorella/Fratello">Sorella/Fratello</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="hobby">Hobby</label>
+          <select id="hobby" multiple>
+            <option value="Videogiochi">Videogiochi</option>
+            <option value="Giardinaggio">Giardinaggio</option>
+            <option value="Musica">Musica</option>
+            <option value="Sport">Sport</option>
+            <option value="Cinema">Cinema</option>
+            <option value="Viaggi">Viaggi</option>
+            <option value="Moda">Moda</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="age">Età</label>
+          <input
+            type="range"
+            id="age"
+            min="0"
+            max="100"
+            step="1"
+            value="24"
+            oninput="this.nextElementSibling.value = this.value"
+          />
+          <output>24</output>
+        </div>
+
+        <button type="submit">Genera un regalo</button>
+      </form>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
