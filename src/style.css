@@ -1,96 +1,53 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --primary-r: 223;
+  --primary-g: 46;
+  --primary-b: 56;
+  --primary-a: 1;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --secondary-r: 93;
+  --secondary-g: 156;
+  --secondary-b: 89;
+  --secondary-a: 1;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --tertiary-r: 199;
+  --tertiary-g: 232;
+  --tertiary-b: 202;
+  --tertiary-a: 1;
+
+  --bg-color-r: 221;
+  --bg-color-g: 247;
+  --bg-color-b: 227;
+  --bg-color-a: 1;
+
+  --primary-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), var(--primary-a));
+  --secondary-color: rgba(var(--secondary-r), var(--secondary-g), var(--secondary-b), var(--secondary-a));
+  --tertiary-color: rgba(var(--tertiary-r), var(--tertiary-g), var(--tertiary-b), var(--tertiary-a));
+  --bg-color: rgba(var(--bg-color-r), var(--bg-color-g), var(--bg-color-b), var(--bg-color-a));
+
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+@font-face{
+  font-family: 'MountainsofChristmas';
+  src:  url('./assets/fonts/MountainsofChristmas.ttf')  format('truetype');
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  font-family: 'MountainsofChristmas', serif;
   text-align: center;
+  color: var(--primary-color);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.container {
+  width: 80%;
+  margin: 2rem auto;
 }

@@ -2,7 +2,7 @@ import { setupGenerator } from "./generator";
 import { hobbies } from "./data";
 import "./style.css";
 
-const generateForm = () => {
+const generateHobbiesChips = () => {
   document.querySelector<HTMLDivElement>("#hobbies")!.innerHTML = hobbies
     .map(
       (hobby: string) => `
@@ -18,5 +18,5 @@ const generateForm = () => {
     .join("");
 };
 
-generateForm();
+generateHobbiesChips();
 setupGenerator(document.querySelector<HTMLFormElement>("#gift-form")!);

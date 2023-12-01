@@ -8,41 +8,45 @@
   </head>
   <body>
     <div id="app">
-      <h1>Per chi vorresti trovare un regalo?</h1>
+      <div class="container">
+        <h1>Trova il regalo perfetto per Natale</h1>
 
-      <form action="" id="gift-form">
-        <div>
-          <label for="relation">Relazione</label>
-          <select id="relation" name="relation">
-            <option value="Partner Romantico">Partner Romantico</option>
-            <option value="Amica/o">Amica/o</option>
-            <option value="Figlia/o">Figlia/o</option>
-            <option value="Genitore">Genitore</option>
-            <option value="Sorella/Fratello">Sorella/Fratello</option>
-          </select>
-        </div>
+        <form action="" id="gift-form">
+          <div>
+            <label for="relation">
+              <span class="screenreader">Seleziona per chi è il regalo</span></label>
+            <select id="relation" name="relation">
+              <option value="">Il regalo è per:</option>
+              <option value="Partner Romantico">Partner Romantico</option>
+              <option value="Amica/o">Amica/o</option>
+              <option value="Figlia/o">Figlia/o</option>
+              <option value="Genitore">Genitore</option>
+              <option value="Sorella/Fratello">Sorella/Fratello</option>
+            </select>
+          </div>
 
-        <div id="hobbies"></div>
+          <div id="hobbies"></div>
 
-        <div>
-          <label for="age">Età</label>
-          <input
-            name="age"
-            type="range"
-            id="age"
-            min="0"
-            max="100"
-            step="1"
-            value="24"
-            oninput="this.nextElementSibling.value = this.value"
-          />
-          <output>24</output>
-        </div>
+          <div>
+            <label for="age">Età</label>
+            <input
+              name="age"
+              type="range"
+              id="age"
+              min="0"
+              max="100"
+              step="1"
+              value="24"
+              oninput="this.nextElementSibling.value = this.value"
+            />
+            <output>24</output>
+          </div>
 
-        <button id="generate-btn" type="submit">Genera un regalo</button>
-      </form>
+          <button id="generate-btn" type="submit">Genera un regalo</button>
+        </form>
 
-      <div id="result"></div>
+        <div id="result"></div>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
