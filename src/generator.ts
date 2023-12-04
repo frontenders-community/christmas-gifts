@@ -31,15 +31,19 @@ export function setupGenerator(element: HTMLFormElement) {
   };
 
   const showGift = (gift: Gift) => {
-    document.querySelector<HTMLDivElement>("#result")!.innerHTML = `
+    const resultDiv = document.querySelector<HTMLDivElement>("#result");
+    resultDiv!.innerHTML = `
       <p>${gift.name}<p>
     `;
+    resultDiv!.classList.remove("hidden");
   };
 
   const showError = (errorMessage: string) => {
-    document.querySelector<HTMLDivElement>("#result")!.innerHTML = `
+    const resultDiv = document.querySelector<HTMLDivElement>("#result");
+    resultDiv!.innerHTML = `
       <p>${errorMessage}<p>
     `;
+    resultDiv!.classList.remove("hidden");
   };
 
   const generateGift = (event: Event) => {

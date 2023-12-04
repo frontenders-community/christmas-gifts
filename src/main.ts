@@ -6,13 +6,13 @@ const generateHobbiesChips = () => {
   document.querySelector<HTMLDivElement>("#hobbies")!.innerHTML = hobbies
     .map(
       (hobby: string) => `
-    <label for="${hobby}">${hobby}</label>
     <input
       type="checkbox"
       value="${hobby}"
       name="hobby[]"
       id="${hobby}"
     />
+    <label class="checkbox-label" for="${hobby}">${hobby}</label>
     `
     )
     .join("");

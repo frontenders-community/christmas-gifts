@@ -1,31 +1,33 @@
 :root {
+  /* primary: rgb(223, 46, 56, 1) */
+  /* secondary: rgb(93, 156, 89, 1) */
+  /* tertiary: rgb(199, 232, 202, 1) */
+  /* background: rgb(105, 171,225,1) */
+
   --primary-r: 223;
   --primary-g: 46;
   --primary-b: 56;
-  --primary-a: 1;
 
   --secondary-r: 93;
   --secondary-g: 156;
   --secondary-b: 89;
-  --secondary-a: 1;
 
   --tertiary-r: 199;
   --tertiary-g: 232;
   --tertiary-b: 202;
-  --tertiary-a: 1;
 
-  --bg-color-r: 221;
-  --bg-color-g: 247;
-  --bg-color-b: 227;
-  --bg-color-a: 1;
+  --bg-color-r: 105;
+  --bg-color-g: 171;
+  --bg-color-b: 225;
 
-  --primary-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), var(--primary-a));
-  --secondary-color: rgba(var(--secondary-r), var(--secondary-g), var(--secondary-b), var(--secondary-a));
-  --tertiary-color: rgba(var(--tertiary-r), var(--tertiary-g), var(--tertiary-b), var(--tertiary-a));
-  --bg-color: rgba(var(--bg-color-r), var(--bg-color-g), var(--bg-color-b), var(--bg-color-a));
-
+  --primary-color: var(--primary-r), var(--primary-g), var(--primary-b);
+  --secondary-color: var(--secondary-r), var(--secondary-g), var(--secondary-b);
+  --tertiary-color: var(--tertiary-r), var(--tertiary-g), var(--tertiary-b);
+  --bg-color: var(--bg-color-r), var(--bg-color-g), var(--bg-color-b);
 }
 
+/* COMMON */
+/* Reset */
 * {
   padding: 0;
   margin: 0;
@@ -33,21 +35,211 @@
 }
 
 body {
-  background-color: var(--bg-color);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--bg-color), 0.6),
+    rgba(var(--bg-color), 0.2)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-@font-face{
-  font-family: 'MountainsofChristmas';
-  src:  url('./assets/fonts/MountainsofChristmas.ttf')  format('truetype');
+/* Layout */
+#app {
+  height: 100vh;
+  overflow-y: auto;
 }
 
-h1 {
-  font-family: 'MountainsofChristmas', serif;
-  text-align: center;
-  color: var(--primary-color);
+.snow {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url(./assets/img/1.png), url(./assets/img/2.png),
+    url(./assets/img/3.png);
+  animation: snowAnimation 20s linear infinite;
+  z-index: -1;
 }
 
 .container {
   width: 80%;
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 10rem 0;
+}
+
+/* Typography */
+@font-face {
+  font-family: "MountainsofChristmas";
+  src: url("./assets/fonts/MountainsofChristmas.ttf") format("truetype");
+}
+
+h1 {
+  font-family: "MountainsofChristmas", serif;
+  text-align: center;
+  color: rgba(var(--primary-color), 1);
+  font-size: 3rem;
+}
+
+/* Utilities */
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Form elements */
+
+form {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Select */
+.form-select {
+  border: 0;
+  padding: 0.4rem 1rem;
+  box-shadow: 0px 1px 4px rgba(var(--secondary-color), 0.8);
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+
+.form-select:focus-visible,
+.form-select:focus {
+  box-shadow: 0px 1px 4px rgba(var(--secondary-color), 1);
+  outline: none;
+}
+
+.form-select option:checked {
+  background-color: rgba(var(--secondary-color), 0.6);
+}
+
+/* Checkboxes */
+#hobbies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+input[type="checkbox"] ~ label {
+  display: inline-block;
+  background-color: rgba(var(--secondary-color), 0.4);
+  padding: 0.4rem 1rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: rgba(var(--secondary-color), 1);
+}
+
+/* Range */
+input[type="range"] {
+  -webkit-appearance: none !important;
+  background: rgba(var(--secondary-color), 1);
+  height: 7px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background: rgba(var(--primary-color), 1);
+  height: 20px;
+  width: 10px;
+}
+
+#generate-btn {
+  position: relative;
+  background-color: rgba(var(--primary-color), 1);
+  border: 0;
+  padding: 0.6rem 1.3rem;
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+#generate-btn::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--primary-color), 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 10px;
+  transform: translate3d(0, 0.5em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+#generate-btn:hover {
+  transform: translate(0, -0.175em);
+}
+
+#generate-btn:active {
+  transform: translate(0em, 0.175em);
+}
+
+#generate-btn:active::after {
+  transform: translate3d(0, 0, -1em);
+}
+
+/* Result */
+#result {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+@keyframes snowAnimation {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
 }

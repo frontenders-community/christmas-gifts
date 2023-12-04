@@ -8,28 +8,34 @@
   </head>
   <body>
     <div id="app">
+      <div class="snow"></div>
       <div class="container">
         <h1>Trova il regalo perfetto per Natale</h1>
 
         <form action="" id="gift-form">
-          <div>
+          <div class="mb-2">
             <label for="relation">
-              <span class="screenreader">Seleziona per chi è il regalo</span></label>
-            <select id="relation" name="relation">
-              <option value="">Il regalo è per:</option>
-              <option value="Partner Romantico">Partner Romantico</option>
-              <option value="Amica/o">Amica/o</option>
-              <option value="Figlia/o">Figlia/o</option>
-              <option value="Genitore">Genitore</option>
-              <option value="Sorella/Fratello">Sorella/Fratello</option>
-            </select>
+              <span class="sr-only">Seleziona per chi è il regalo</span></label
+            >
+            <div class="select">
+              <select id="relation" name="relation" class="form-select">
+                <option disabled selected>Il regalo è per:</option>
+                <option value="Partner Romantico">Partner Romantico</option>
+                <option value="Amica/o">Amica/o</option>
+                <option value="Figlia/o">Figlia/o</option>
+                <option value="Genitore">Genitore</option>
+                <option value="Sorella/Fratello">Sorella/Fratello</option>
+              </select>
+            </div>
           </div>
 
-          <div id="hobbies"></div>
+          <h3>Scegli hobby</h3>
+          <div id="hobbies" class="mb-2"></div>
 
-          <div>
+          <div class="mb-3">
             <label for="age">Età</label>
             <input
+              class="form-range"
               name="age"
               type="range"
               id="age"
@@ -45,7 +51,7 @@
           <button id="generate-btn" type="submit">Genera un regalo</button>
         </form>
 
-        <div id="result"></div>
+        <div id="result" class="hidden"></div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
