@@ -2,6 +2,10 @@ import { Filters, Gift } from "./types";
 import { gifts } from "./data";
 
 export function setupGenerator(element: HTMLFormElement) {
+  const lid = document.querySelector<HTMLImageElement>(".lid")!;
+  const resultDiv = document.querySelector<HTMLDivElement>("#result")!;
+  const errorDiv = document.querySelector<HTMLDivElement>("#error")!;
+
   const getFilters = (): Filters => {
     const data = new FormData(element);
     const filter: Filters = { hobby: [], age: 0, relation: "" };
@@ -31,26 +35,34 @@ export function setupGenerator(element: HTMLFormElement) {
   };
 
   const showGift = (gift: Gift) => {
-    const resultDiv = document.querySelector<HTMLDivElement>("#result");
-    resultDiv!.innerHTML = `
-      <p>${gift.name}<p>
-    `;
-    resultDiv!.classList.remove("hidden");
+    lid.classList.add("move");
+    document
+      .querySelector<HTMLDivElement>(".gift-box")!
+      .addEventListener("click", function () {
+        resultDiv!.innerHTML = `<p>
+        ${gift.name}</p>
+      `;
+        lid.classList.remove("move");
+        lid.classList.add("open");
+        resultDiv!.classList.remove("hidden");
+      });
   };
 
   const showError = (errorMessage: string) => {
-    const resultDiv = document.querySelector<HTMLDivElement>("#result");
-    resultDiv!.innerHTML = `
-      <p>${errorMessage}<p>
-    `;
-    resultDiv!.classList.remove("hidden");
+    errorDiv.innerHTML = errorMessage;
+    errorDiv.classList.remove("hidden");
   };
 
   const generateGift = (event: Event) => {
+    lid.classList.remove("open");
+    resultDiv.classList.add("hidden");
+    resultDiv.innerHTML = "";
+    errorDiv.classList.add("hidden");
+    errorDiv.innerHTML = "";
+
     event.preventDefault();
     const filters = getFilters();
     const filteredGifst = getFilteredGifts(filters);
-    console.log(filteredGifst);
 
     if (filteredGifst.length > 0) {
       showGift(filteredGifst[getRandomInteger(filteredGifst.length - 1)]);

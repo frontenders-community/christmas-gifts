@@ -12,7 +12,7 @@
       <div class="container">
         <h1>Trova il regalo perfetto per Natale</h1>
 
-        <form action="" id="gift-form">
+        <form action="" id="gift-form" class="mb-1">
           <div class="mb-2">
             <label for="relation">
               <span class="sr-only">Seleziona per chi è il regalo</span></label
@@ -29,7 +29,7 @@
             </div>
           </div>
 
-          <h3>Scegli hobby</h3>
+          <h3>Scegli categoria</h3>
           <div id="hobbies" class="mb-2"></div>
 
           <div class="mb-3">
@@ -51,7 +51,16 @@
           <button id="generate-btn" type="submit">Genera un regalo</button>
         </form>
 
-        <div id="result" class="hidden"></div>
+        <div id="error" class="hidden mb-3"></div>
+
+        <div class="result-container">
+          <div id="result" class="hidden"></div>
+
+          <div class="gift-box">
+            <img class="lid" src="./src/assets/img/box-lid.png" alt="" />
+            <img class="box" src="./src/assets/img/box.png" alt="" />
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

@@ -66,7 +66,7 @@ body {
 .container {
   width: 80%;
   margin: 0 auto;
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 /* Typography */
@@ -102,10 +102,6 @@ h1 {
   width: 1px;
   height: 1px;
   overflow: hidden;
-}
-
-.hidden {
-  display: none !important;
 }
 
 /* Form elements */
@@ -156,13 +152,14 @@ input[type="checkbox"] {
 input[type="checkbox"] ~ label {
   display: inline-block;
   background-color: rgba(var(--secondary-color), 0.4);
-  padding: 0.4rem 1rem;
+  padding: 0.6rem 1.2rem;
   margin: 0.5rem;
   border-radius: 5px;
 }
 
 input[type="checkbox"]:checked + label {
   background-color: rgba(var(--secondary-color), 1);
+  color: white;
 }
 
 /* Range */
@@ -179,6 +176,14 @@ input[type="range"]::-webkit-slider-thumb {
   background: rgba(var(--primary-color), 1);
   height: 20px;
   width: 10px;
+}
+
+input[type="range"] + output {
+  font-size: 2rem;
+  vertical-align: middle;
+  margin-left: 1rem;
+  color: rgba(var(--primary-color), 1);
+  font-weight: 600;
 }
 
 #generate-btn {
@@ -221,17 +226,65 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 /* Result */
+.result-container {
+  position: relative;
+}
+
 #result {
-  width: 80%;
+  position: absolute;
+  top: -30px;
+  left: 50%;
   margin: 0 auto;
-  padding: 1rem;
-  min-height: 200px;
+  height: 100px;
   background-color: white;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.3rem;
+  transform: translateX(-50%);
+  width: 300px;
+  overflow: hidden;
+  text-align: center;
+  transition: all 1s linear;
+}
+
+#result.hidden {
+  width: 0px;
+  transition: none;
+}
+
+.gift-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin: 3rem auto 0;
+}
+
+.gift-box .lid {
+  position: relative;
+  margin-bottom: -10px;
+  z-index: 10;
+}
+
+.gift-box .lid.move {
+  animation: 1s wiggle infinite linear;
+}
+
+.gift-box .lid.open {
+  animation: 1s open;
+  transform: rotate(145deg) translate(-70%, -170px);
+}
+
+/* Error */
+#error {
+  text-align: center;
+  color: rgba(var(--primary-color), 1);
+}
+
+#error.hidden {
+  display: none;
 }
 
 @keyframes snowAnimation {
@@ -241,5 +294,38 @@ input[type="range"]::-webkit-slider-thumb {
 
   100% {
     background-position: 500px 1000px, 400px 400px, 300px 300px;
+  }
+}
+
+@keyframes wiggle {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes open {
+  0% {
+    transform: rotate(0deg) translate(-50%, 0);
+  }
+
+  100% {
+    transform: rotate(145deg) translate(-70%, -170px);
   }
 }
